@@ -6,31 +6,26 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
 
+import useInitialState from '../hooks/useInitialState';
 
 import '../assets/styles/App.scss'
 
-const App = () => {
-    //useState, videos: nombre de la variable, setVideos:Actualizar al estado
-    const [ videos, setVideos ] = useState([]);
-    const API = 'http://localhost:3000/initalState';
-    //useEffect
-    useEffect(() => {
-        //fetch recibe la api
-        fetch(API)
-            .then(response => response.json())
-            .then(data => setVideos(data))
-    }, []);
+const API = 'http://localhost:3000/initalState';
 
-    console.log(videos);
+const App = () => {
+    
+    const initialState = useInitialState(API)
 
     return (
         <div className="App">
             <Header />
             <Search />
-            {videos.mylist?.length > 0 &&
+            {initialState.mylist?.length > 0 &&
                 <Categories title="Mi Lista">
                     <Carousel>
-                        <CarouselItem />
+                        {initialState.mylist?.map(item=>
+                            <CarouselItem key={item.id} {...item} />
+                        )}                    
                     </Carousel>
                 </Categories>
             }
@@ -38,7 +33,7 @@ const App = () => {
 
             <Categories title="Trending">
                 <Carousel>
-                    {videos.trends?.map(item=>
+                    {initialState.trends?.map(item=>
                         <CarouselItem key={item.id} {...item} />
                     )}
                 </Carousel>
@@ -46,7 +41,7 @@ const App = () => {
 
             <Categories title="Originals">
                 <Carousel>
-                    {videos.originals?.map(item=>
+                    {initialState.originals?.map(item=>
                         <CarouselItem key={item.id} {...item} />
                     )}
                 </Carousel>
