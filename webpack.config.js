@@ -3,9 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
-
-// Module for export 
+// Module for export.
 module.exports = {
     //entry, proncipal file 
     entry: './src/index.js',
