@@ -55,6 +55,10 @@ module.exports = {
             }
         ],
     },
+    //Configuration Routes
+    devServer: {
+        historyApiFallback: true,
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html',
