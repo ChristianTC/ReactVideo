@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import {connect} from 'react-redux';
 import googleIcon from '../assets/static/google-icon.png';
 import twitterIcon from '../assets/static/twitter-icon.png';
 
 import  {Link} from 'react-router-dom';
 
+import {loginRequest} from '../actions'
+
 import '../assets/styles/components/Login.scss';
 
-const Login = () => {
+const Login = props => {
     // constante que trae 2 valores: el 1ro trae el formulario y el 2do permite guardar los valores.
     const [form, setValues] = useState({
         email: '',
@@ -22,7 +25,9 @@ const Login = () => {
     // funcion para enviar o transmitir la informacion
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(form);
+        props.loginRequest(form);
+        //console.log(form);
+        props.history.push('/');
     }
 
     return(
@@ -67,4 +72,10 @@ const Login = () => {
     </section>
 )};
 
-export default Login;
+//Enviar la informacion a los actions
+const mapDispatchToProps = {
+    loginRequest,
+}
+
+//export default Login;
+export default connect(null, mapDispatchToProps)(Login);

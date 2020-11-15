@@ -14,6 +14,13 @@ const reducer = (state, action) => {
                 mylist: state.mylist.filter(items => items.id !== action.payload)
             }
 
+        case 'LOGIN_REQUEST':
+            return {
+                ...state,
+                // a user se le transmite el objeto que se esta creando en el action
+                user: action.payload,
+            }
+
         default:
             return state;
     }
