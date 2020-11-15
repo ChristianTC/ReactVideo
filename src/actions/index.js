@@ -5,3 +5,9 @@ export const setFavorite = payload => ({
     payload, 
 });
 
+// lo que voy a eliminar
+export const deleteFavorite = payload => ({
+    type: 'DELETE_FAVORITE',
+    payload,
+});
+
