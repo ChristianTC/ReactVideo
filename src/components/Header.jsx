@@ -8,6 +8,8 @@ import gravatar from '../utils/gravatar';
 // logoutRequest fue nuestro action para cerrar sesion
 import { logoutRequest } from '../actions';
 
+import PropTypes from 'prop-types';
+
 import '../assets/styles/components/Header.scss';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/user-icon.png';
@@ -66,6 +68,10 @@ const Header = props => {
         </div>
     </header>
 )}
+
+Header.propTypes = {
+    user: PropTypes.object,
+};
 
 // Se encarga de mapear nuestras propiedades del estado
 const mapStateToProps = state => {
