@@ -20,6 +20,11 @@ const reducer = (state, action) => {
                 // a user se le transmite el objeto que se esta creando en el action
                 user: action.payload,
             }
+        case 'LOGOUT_REQUEST':
+            return {
+                ...state,
+                user: action.payload,
+            }
 
         default:
             return state;
