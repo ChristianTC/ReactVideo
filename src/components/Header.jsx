@@ -3,6 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 // Link para manejar los enlaces
 import { Link } from 'react-router-dom';
+
+import classNames from 'classnames';
+
 // gravatar fue la funcion para traer las imagenes
 import gravatar from '../utils/gravatar';
 // logoutRequest fue nuestro action para cerrar sesion
@@ -16,7 +19,7 @@ import userIcon from '../assets/static/user-icon.png';
 
 const Header = props => {
     
-    const { user } = props;
+    const { user, isLogin, isRegister } = props;
 
     //validacionn para saber si tiene o no al usuario
     const hasUser = Object.keys(user).length > 0;
@@ -25,8 +28,13 @@ const Header = props => {
         props.logoutRequest({})
     } 
 
+    const headerClass = classNames('header', {
+        isLogin, 
+        isRegister,
+    })
+
     return(
-    <header className="header">
+    <header className={headerClass}>
 
         <Link to="/">
             <img className="header__img" src={logo} alt="Platzi Video" />
