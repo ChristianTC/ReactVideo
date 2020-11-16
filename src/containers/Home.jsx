@@ -19,7 +19,7 @@ const Home = ({ mylist, trends, originals }) => {
     return (
         <>
             <Header />
-            <Search />
+            <Search isHome />
             {mylist?.length > 0 &&
                 <Categories title="Mi Lista">
                     <Carousel>
